@@ -1,0 +1,26 @@
+<html>
+<head>
+<title>RIGHT IFRAME</title>
+
+<style>
+body {
+  background-color: #C0C0FF;
+}
+</style>
+<script>
+  function got_loaded() {
+    parent.document.getElementById("DATA2").value="Right IFrame got loaded";
+  }
+</script>
+</HEAD>
+
+<body onload="got_loaded();">
+<H2> HELLO</h2>
+    <p>From right IFRAME </p>
+    <p>
+        Note: This IFRAME has access to the parent window. The Button below does a 
+        parent.x.Click(this) 
+    </p>
+    <button ID="DONE-RIGHT"type="button" onclick="parent.x.Click(this)">Done!</button>
+</body>
+</html>
