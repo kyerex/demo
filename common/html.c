@@ -10,6 +10,9 @@ void do_ath64(unsigned char *src, int len,unsigned char *out, int *out_len);
 void do_hta64(unsigned char *src, int len,unsigned char *out, int *out_len);
 void in_chr(char *bp) ;
 
+#define osc_start "\033]99;"
+#define osc_end "\033\\"
+#define osc_long_start2 "\033]98;*%08u," // add * and len if greater than 10000
 #define osc_start2 "\033]98;"
 #define gui_start "12351,0,0,0,0,9,1,"
 #define osc_end2 "*\033\\"
@@ -18,6 +21,15 @@ void in_chr(char *bp) ;
 char *buf=0;
 int dlen=0;
 int buf_len=0;
+
+void sm32_out (char *bp)
+{
+    out_str(osc_start); // start of operating system command 99
+    out_str(bp); // sm32 mnemonic
+    out_str(osc_end); // end of operating system command 99
+    out_flush();
+}
+
 
 void html_init()
 {
@@ -33,10 +45,12 @@ void html_out ()
 {
     unsigned char *bp2;
     int lenx;
+	char sbuf[32];
 
 	if (dlen ==0) {
 		return;
 	}
+	out_flush();
 	bp2=(unsigned char *)buf+dlen;
 	if (dlen+3 > buf_len) { //about to overflow buffer
 		buf_len=buf_len+bsize;
@@ -46,12 +60,19 @@ void html_out ()
 	*bp2=0;++dlen;++bp2;
 	*bp2=0;++dlen;
 
-    out_str(osc_start2); // start of operating system command 98
 
     bp2=alloca(dlen * 4/3 +16);
     do_hta64((unsigned char *)buf,dlen,bp2,&lenx);
 	free((void *)buf);
 	buf = 0;dlen=0;buf_len=0;
+	if (lenx > 5000) {
+    	sprintf(sbuf,osc_long_start2,lenx); // start of operating system command 98+*+len
+	}
+	else {
+		strcpy(sbuf,osc_start2);
+	}
+	out_str(sbuf);
+	out_flush();
     while (lenx > 4000) {
         out_block((char *)bp2,4000);
         bp2=bp2+4000;lenx=lenx-4000;

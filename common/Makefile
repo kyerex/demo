@@ -1,7 +1,7 @@
 CC=	gcc
 CFLAGS=	-g -O0 -Wall -I. 
 
-OBJS=   out.o sm32out.o html.o
+OBJS=   out.o html.o
 
 all:	common.a
 

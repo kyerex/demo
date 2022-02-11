@@ -150,11 +150,11 @@ void out_line_feed()
 
 void out_flush()
 {
-if ( oi.next_bp == oi.out_buf ) return;
-if (-1 == write(1,oi.out_buf,oi.next_bp-oi.out_buf ) ) {
+   if ( oi.next_bp == oi.out_buf ) return;
+   if (-1 == write(1,oi.out_buf,oi.next_bp-oi.out_buf ) ) {
       printf ("Write Failed ???");
       abort();
    }
-oi.next_bp=oi.out_buf;
-return;
+   oi.next_bp=oi.out_buf;
+   return;
 }
