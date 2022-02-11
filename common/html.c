@@ -130,6 +130,7 @@ void html_load_base64(char *fname,char **h)
 	int len,lenx;
 	char *bp;
 
+	*h=NULL;
 	html_load_file(fname,&bp,&len);
 	if (bp == NULL) return;
     *h=malloc(len * 4/3 +16);
