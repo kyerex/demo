@@ -3,27 +3,25 @@ CFLAGS= -g -O0 -Wall -I. -I../common
 
 LIBS=	../common/out.a
 
-all:	demo1 demo2 demo2x demo2y helloworld
+OBJS=	demo1.o \
+	helloworld.o \
+	demo2x.o \
+	demo3x.o \
+	demoiframe.o \
+	menuhw.o \
+	demo2.o \
+	demo3.o \
+	democss.o \
+	demo2y.o \
+	demo3y.o \
+	window_open.o \
+	jsData.o \
+	alldemof.o
 
-demo1:	demo1.o $(LIBS) 
-	gcc -o demo1 demo1.o $(LIBS) -lcurses  
-
-demo2:	demo2.o html/html_files.o $(LIBS) 
-	gcc -o demo2 demo2.o html/html_files.o $(LIBS) -lcurses  
-
-demo2x:	demo2x.o $(LIBS) 
-	gcc -o demo2x demo2x.o $(LIBS) -lcurses  
-
-demo2y:	demo2y.o $(LIBS) 
-	gcc -o demo2y demo2y.o $(LIBS) -lcurses  
-
-helloworld:	helloworld.o $(LIBS) 
-	gcc -o helloworld helloworld.o $(LIBS) -lcurses  
+all:	$(OBJS) $(LIBS) 
+	gcc -o alldemof $(OBJS) html/html_files.o $(LIBS) -lcurses  
 
 clean:
 	@rm -f *.o
-	@rm -f demo1
-	@rm -f demo2
-	@rm -f demo2x
-	@rm -f demo2y
-	@rm -f helloworld
+	@rm -f html/html_files.*
+	@rm -f alldemof

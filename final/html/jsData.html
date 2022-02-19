@@ -1,0 +1,32 @@
+<html>
+<head>
+<style>
+body {
+   background-color: #C0C0C0;
+}
+</style>
+<script>
+function popup(p)
+{
+    let pw=open("about:blank","MYHELP","width=600,height=400,top=20,left=20");
+    pw.document.open();
+    if (p == 1) {
+        pw.document.write(x.jsData.page1);
+    }
+    else {
+        pw.document.write(x.jsData.page2);
+    }
+    pw.document.close();
+}
+</script>
+</head>
+<body>
+<H1>"popup function get the pages from x.jsData"</h1>
+<p>Help Page 1 will display data contianed in x.jsData.page1 - 
+Help Page 2 will display data contianed in x.jsData.page2.
+</p>
+    <button type="button" onclick="popup(1)">Help PAGE 1</button>&nbsp&nbsp&nbsp
+    <button type="button" onclick="popup(2)">Help PAGE 2</button>&nbsp&nbsp&nbsp
+    <button ID="DONE" type="button" onclick="x.Click(this)">DONE</button>&nbsp&nbsp&nbsp
+</body>
+</html>

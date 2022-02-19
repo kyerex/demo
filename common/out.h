@@ -6,6 +6,9 @@
 #include <term.h>
 #include <stdio.h>
 
+#ifdef __cplusplus
+extern "C"{
+#endif 
 
 struct out_info
 {
@@ -21,10 +24,11 @@ void out_str(char *bp);
 int out_char(int);
 void out_block(char *bp ,int len);
 
-void out_clear_screen();
 void out_flush();
 void out_open();
 void out_close();
+
+void out_clear_screen();
 void out_clr_eos();
 void out_clear_line();
 void out_cursor_home();
@@ -46,5 +50,9 @@ void out_cursor_address(int row,int col);
 void out_ring_bell();
 void out_line_feed();
 
+#ifdef __cplusplus
+}
+#endif
 
-#endif /* _demoh */
+
+#endif /* _outh */

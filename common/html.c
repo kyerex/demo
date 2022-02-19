@@ -12,7 +12,7 @@ void in_chr(char *bp) ;
 
 #define osc_start "\033]99;"
 #define osc_end "\033\\"
-#define osc_long_start2 "\033]98;*%08u," // add * and len if greater than 10000
+#define osc_long_start2 "\033]98;*%08u," // add * and len if greater than 5000
 #define osc_start2 "\033]98;"
 #define gui_start "12351,0,0,0,0,9,1,"
 #define osc_end2 "*\033\\"

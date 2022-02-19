@@ -1,28 +1,26 @@
 <html>
 <head>
 <title>This is DEMO 3</title>
-
 <style>
 body {
   background-color: #C0C0C0;
 }
 </style>
-
 </HEAD>
 
-<body onload=x.Click()>
+<body>
 <H2> DEMO 3</h2>
-<p> This demo shows how to pass SET_value_xxxx to a Load HTML created program to add run time data. 
-Where xxxx is the ID of the element.
-</p>
 <form ID="THEFORM">
-  <B>Enter String:&nbsp;</b><input TYPE="Text" NAME="STRING" ID="STRING" SIZE=40 ><BR><br>
+SEE DEMO3.HTML:<br>
+This demo adds changing the contents of the HTML file. <br><br>
+   Time Of Day: <span ID="TOD">abc</span> <input type="submit" name="Update" value="Update Time"><br><br>
+ 
+  <B>Enter String:&nbsp;</b><input TYPE="Text" NAME="STRING" SIZE=40 ><BR><br>
   <B>Check or Uncheck this checkbox</b><br>
-  <B>Check Box:&nbsp;</b><input type="Checkbox" NAME="CHECKBOX" ID="CHECKBOX"><BR>
+  <B>Check Box:&nbsp;</b>
+  <input type="Checkbox" value="CHECKED" name="CHECKBOX"><BR>
   <BR>
-  <input type="submit" name="CANCEL" value="Cancel">&nbsp;&nbsp;
-  <input type="submit" name="DOIT" value="  Do It  ">&nbsp;&nbsp;
-  <input type="submit" name="NEXT" value="  Next  ">
+  <input type="submit" name="Okay" value="Okay">&nbsp;&nbsp;
 </form>
 </body>
 </html>

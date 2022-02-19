@@ -9,9 +9,11 @@
 void check_fatal();
 void dmessage(char *);
 
-void demo2y()
+
+void demo3y()
 {
-    char *hbp,*bp;
+    char *bp;
+    char buf[128];
     time_t t;
     char message[1024];
 
@@ -21,19 +23,21 @@ void demo2y()
     set_value("params","left=200,top=200,width=500,height=350");
     html_out();
 
-    while (1) {
-        html_init();                        //init output
-        set_value("protocol","0");
-        set_value("type","loadform");
-        hbp=malloc(demo2_html_len+1);
-        strcpy(hbp,&demo2_html_start);
+    html_init();                        //init output
+    set_value("protocol","0");
+    set_value("type","loadform");
+    set_value("html",&demo3_html_start);              //place in output
 
+    while (1) {
+        html_out();
         t=time(0);
         bp=ctime(&t);
-        html_replace(&hbp,"????time",bp);
-        set_value("html",hbp);              //place in output
-        free(hbp);                          //html_load used malloc
-
+        sprintf(buf,"<span ID=\"TOD\">%s</span>",bp);
+        html_init();
+        set_value("protocol","8");
+        set_value("type","SETouterHTML");
+        set_value("ElementId","TOD");
+        set_value("Text",buf);
         html_out();
         html_in();
         check_fatal();
@@ -44,12 +48,16 @@ void demo2y()
             dmessage(message);
             return;
         }
-
         get_value("Update",&bp);
         if (*bp == '\0') {
             break;
         }
+        html_init();                        //init output
+        set_value("protocol","0");
+        set_value("type","loadform");
+        set_value("html"," ");              // do not redisplay
     }
+
 
     get_value("Okay",&bp);
     if (*bp != '\0') strcpy (message,"The \"Okay\" button was clicked\n\n");

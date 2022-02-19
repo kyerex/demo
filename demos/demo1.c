@@ -37,7 +37,7 @@ int main()
         exit(1);
     }
 
-    sm32_out("gwin(\"console\")");
+    //sm32_out("gwin(\"console\")");
     sm32_out("pop");
     sm32_out("backgr");
     sm32_out("black");
@@ -59,10 +59,6 @@ int main()
     get_value("STRING",&bp);
     out_str("The text box \"STRING\" contains: ");
     out_str(bp);
-    out_str("\n\n");
-
-    out_str("Terminal:");
-    out_str(ttyname(0));
     out_str("\n\n");
 
     out_close();

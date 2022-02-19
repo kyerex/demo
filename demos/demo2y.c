@@ -20,8 +20,6 @@ int main()
     set_value("type","dialog_open");
     set_value("params","left=200,top=200,width=500,height=350");
     html_out();
-    sm32_out("gwin(\"web\")");
-    //better be error free we are in web mode
 
     while (1) {
         html_init();                        //init output

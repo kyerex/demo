@@ -3,7 +3,8 @@ CFLAGS= -g -O0 -Wall -I. -I../common
 
 LIBS=	../common/out.a
 
-all:	demo1 demo2 demo2x demo2y demo3 demo3x demo3y democss demoiframe helloworld
+all:	demo1 demo2 demo2x demo2y demo3 demo3x demo3y democss \
+		demoiframe helloworld menuhw window_open jsData alldemo
 
 demo1:	demo1.o $(LIBS) 
 	gcc -o demo1 demo1.o $(LIBS) -lcurses  
@@ -35,6 +36,18 @@ demoiframe:	demoiframe.o $(LIBS)
 helloworld:	helloworld.o $(LIBS) 
 	gcc -o helloworld helloworld.o $(LIBS) -lcurses  
 
+menuhw:	menuhw.o $(LIBS) 
+	gcc -o menuhw menuhw.o $(LIBS) -lcurses  
+
+window_open:	window_open.o $(LIBS) 
+	gcc -o window_open window_open.o $(LIBS) -lcurses  
+
+jsData:	 jsData.o $(LIBS) 
+	gcc -o jsData jsData.o $(LIBS) -lcurses  
+
+alldemo:	alldemo.o $(LIBS) 
+	gcc -o alldemo alldemo.o $(LIBS) -lcurses  
+
 clean:
 	@rm -f *.o
 	@rm -f demo1
@@ -47,3 +60,7 @@ clean:
 	@rm -f democss
 	@rm -f demoiframe
 	@rm -f helloworld
+	@rm -f menuhw
+	@rm -f jsData
+	@rm -f window_open
+	@rm -f alldemo

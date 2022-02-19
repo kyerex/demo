@@ -1,0 +1,11 @@
+
+/* background red and header 2 whit */
+
+body {
+  background-color: red;
+}
+
+h2 {
+  color: white;
+  margin-left: 40px;
+}

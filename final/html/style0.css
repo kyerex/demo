@@ -1,0 +1,11 @@
+
+/* background white and header 2 black */
+
+body {
+    background-color: white;
+  }
+  
+  h2 {
+    color: black;
+    margin-left: 20px;
+  }
